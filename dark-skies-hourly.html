@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dark Skies Weather Data</title>
+</head>
+<body>
+  
+  <!-- Retrieved Data will be dumped here -->
+  <table id="weather"></table>
+
+  <script src='jquery-3.1.1.min.js'></script>
+  <!-- LINK TO FIREBASE -->
+  <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
+  
+  <script type="text/javascript">
+    // This is our API Key
+    var APIKey = "08f926d9d006e2fa168e83287a7a5c95",
+      unixTime = 1479963600;
+    // Here we are building the URL we need to query the database
+    // unix time 10 digits
+    var queryURL = "https://crossorigin.me/https://api.darksky.net/forecast/" + APIKey +"/41.9362832,-87.647056," + unixTime;
+    // Here we run our AJAX call to the Dark Skies API
+    $.ajax({url: queryURL, method: 'GET'})
+    // We store all of the retrieved data inside of an object called "response"
+    .done(function(response) {
+    //console.log(response);
+    //console.log(response.hourly.data[0]);
+      var buildString = '<tr><th>Hour</th><th>Weather Summary</th><th>Temperature</th></tr>';
+
+      for (i = 0; i < response.hourly.data.length; i++) {
+        // convert unix to hour
+        var date = new Date(response.hourly.data[i].time*1000),
+           hours = date.getHours();
+        //console.log(response.hourly.data[i].summary);
+        buildString += '<tr><td>' + hours +':00</td><td>' + response.hourly.data[i].summary;
+        buildString += '</td><td>' + response.hourly.data[i].temperature + '</td></tr>'
+      }
+      $('#weather').append( buildString );
+    }); 
+  </script>
+
+
+</body>
+</html>

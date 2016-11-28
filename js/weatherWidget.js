@@ -17,7 +17,7 @@ $.ajax({url: queryURL, method: 'GET'})
     console.log(queryURL);
 
       // Log the resulting object
-    console.log(response);
+    console.log(response);	
 
       // Transfer content to HTML
     $('.city').html("<h1>Bujumbura Weather Details</h1>");

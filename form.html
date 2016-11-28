@@ -12,52 +12,67 @@
   <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
   <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 
+<script src="https://www.gstatic.com/firebasejs/3.6.1/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyDQvZNPfQhdI-tbWGtM2ZJVf--LsyGiwWs",
+    authDomain: "solardisplay-1479576622418.firebaseapp.com",
+    databaseURL: "https://solardisplay-1479576622418.firebaseio.com",
+    storageBucket: "solardisplay-1479576622418.appspot.com",
+    messagingSenderId: "479231386655"
+  };
+  firebase.initializeApp(config);
+
+  var database = firebase.database();
+
+  //Values: 
+  var name="";
+  var siteId="";
+  var apiKey="";
+
+  //Capture Button Click 
+ $("#logIn").on("click", function() {
+
+
+    name= $('#name').val().trim();
+    siteId= $('#siteId').val().trim();
+    apiKey= $('#apiKey').val().trim();
+  
+  database.ref().set({
+      name: name,
+      siteId: siteId,
+      apiKey: apiKey,
+  })
+
+  return false;
+});
+
+</script>
+
 </head>
 <body>
 
-
-  
 
   <div class="row">
     <form class="col s12">
       <div class="row">
         <div class="input-field col s6">
-          <input placeholder="Placeholder" id="first_name" type="text" class="validate">
-          <label for="first_name">First Name</label>
-        </div>
-        <div class="input-field col s6">
-          <input id="last_name" type="text" class="validate">
-          <label for="last_name">Last Name</label>
+          <input placeholder="Name" id="name" type="text" class="validate">
+        </div>       
+      <div class="row">
+        <div class="input-field col s12">
+          <input placeholder="Site ID"  id="siteId" type="text" class="validate">
         </div>
       </div>
       <div class="row">
         <div class="input-field col s12">
-          <input disabled value="I am not editable" id="disabled" type="text" class="validate">
-          <label for="disabled">Disabled</label>
+          <input placeholder="API Key" id="apiKey" type="password" class="validate">       
         </div>
       </div>
-      <div class="row">
-        <div class="input-field col s12">
-          <input id="password" type="password" class="validate">
-          <label for="password">Password</label>
-        </div>
+     <button type="submit" class="btn btn-default" id="logIn">Submit</button>
       </div>
-      <div class="row">
-        <div class="input-field col s12">
-          <input id="email" type="email" class="validate">
-          <label for="email">Email</label>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col s12">
-          This is an inline input field:
-          <div class="input-field inline">
-            <input id="email" type="email" class="validate">
-            <label for="email" data-error="wrong" data-success="right">Email</label>
-          </div>
-        </div>
-      </div>
-    </form>
+    </form> 
   </div>
 
   </body>

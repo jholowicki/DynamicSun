@@ -29,25 +29,22 @@
   var database = firebase.database();
 
   //Values: 
-  var name= " ";
-  var siteId= " ";
-  var apiKey= " ";
+  var name, siteId, apiKey, apidate;
 
   //Capture Button Click    
- $("#logIn").on("click", function() {
+ $(document).on("click", "#logIn", function() {
 
 
-    name= $('#name').val().trim();
-    siteId= $('#siteId').val().trim();
-    apiKey= $('#apiKey').val().trim();
-
-    console.log(name);
-    console.log(siteId);
+    name = $('#name').val().trim();
+    siteId = $('#siteId').val().trim();
+    apiKey  = $('#apiKey').val().trim();
+    apidate = $('#apidate').val().trim();
   
   database.ref().push({
       name: name,
       siteId: siteId,
       apiKey: apiKey,
+      apidate: apidate
   })
 
   return false;
@@ -58,10 +55,7 @@
 
 </head>
 <body>
-
-
   <div class="row">
-    <form class="col s12">
       <div class="row">
         <div class="input-field col s6">
           <input placeholder="Name" id="name" type="text" class="validate">
@@ -76,10 +70,13 @@
           <input placeholder="API Key" id="apiKey" type="password" class="validate">       
         </div>
       </div>
-     <button type="submit" class="btn btn-default" id="logIn">Submit</button>
+      <div class="row">
+        <div class="input-field col s12">
+          <input placeholder="Date to view: MM DD YYYY" name="apidate" id="apidate" type="text" class="validate">       
+        </div>
       </div>
-    </form> 
+     <button class="btn btn-default" id="logIn">Submit</button>
+      </div>
   </div>
-
   </body>
 </html>

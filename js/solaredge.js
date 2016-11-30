@@ -1,5 +1,5 @@
 // provides id / address / siteimage...requires api key and id....
-// unfortunately there is no way to get the id with only the api key
+var address = null;
 var solaredgeCallOne = function() {
     var siteID = "31596";
     var apiKey = "H7XOEZEP2D7TGM84OBM76SU75XIAPLTB";
@@ -18,7 +18,7 @@ var solaredgeCallOne = function() {
         console.log("hello", response);
         var id = response.details.id
         console.log("hello", id);
-        var address = response.details.location.address + ", " + response.details.location.city + ", " + response.details.location.state
+        address = response.details.location.address + ", " + response.details.location.city + ", " + response.details.location.state
         console.log("hello", address);
         var siteImage = "https://monitoringapi.solaredge.com/" + response.details.uris.SITE_IMAGE
         console.log("hello", siteImage);
@@ -27,18 +27,19 @@ var solaredgeCallOne = function() {
 };
 
 solaredgeCallOne();
-
-// Returns array of values for a single day's hourly production in Wh. Needs transformation function.
+var yesterdaysDate = moment().format('YYYY-MM-DD');
+console.log('hello', yesterdaysDate);
+// Returns array of values for a single day's hourly production in Wh.
 var solaredgeCallTwo = function() {
+
     var searchTextInput = "Winchester"
     var siteID = "31596";
     var apiKey = "H7XOEZEP2D7TGM84OBM76SU75XIAPLTB";
     var parameter = "/energy?timeUnit=HOUR&";
-    var endDate = "endDate=2016-11-24&"
-    var startDate = "startDate=2016-11-24"
+    var endDate = "endDate=" + yesterdaysDate + "&";
+    var startDate = "startDate=" + yesterdaysDate;
     var apiChain = "&";
     var queryURL = "https://monitoringapi.solaredge.com/site/" + siteID + parameter + endDate + startDate + apiChain + "api_key=" + apiKey;
-
     console.log("hello", queryURL);
 
     $.ajax({
@@ -48,10 +49,82 @@ var solaredgeCallTwo = function() {
         dataType: 'json'
     }).done(function(response) {
         console.log("hello", response);
+        var energyObjectArray = response.energy.values;
+        //transform to exract energy values
+        var result = energyObjectArray.map(function(a) {
+            return a.value;
+        });
         // need array for hours and dates
         //output is response.energy.values: Array of 24 objects
         //in values array each object has date & value keys. "2016-11-24 00:00:00" & null or 13.221094 output
+        $(function() {
+            Highcharts.chart('container', {
+                chart: {
+                    type: 'column'
+                },
+                title: {
+                    text: 'Hourly Solar Output'
+                },
+                subtitle: {
+                    text: ''
+                },
+                xAxis: {
+                    categories: [
+                        '12 am',
+                        '1 am',
+                        '2 am',
+                        '3 am',
+                        '4 am',
+                        '5 am',
+                        '6 am',
+                        '7 am',
+                        '8 am',
+                        '9 am',
+                        '10 am',
+                        '11 am',
+                        '12 pm',
+                        '1 pm',
+                        '2 pm',
+                        '3 pm',
+                        '4 pm',
+                        '5 pm',
+                        '6 pm',
+                        '7 pm',
+                        '8 pm',
+                        '9 pm',
+                        '10 pm',
+                        '11 pm',
+                    ],
+                    crosshair: true
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: 'Energy Produced (kWh)'
+                    }
+                },
+                tooltip: {
+                    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                    pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                        '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
+                    footerFormat: '</table>',
+                    shared: true,
+                    useHTML: true
+                },
+                plotOptions: {
+                    column: {
+                        pointPadding: 0.2,
+                        borderWidth: 0
+                    }
+                },
+                series: [{
+                    name: " ",
+                    data: result
 
+
+                }]
+            });
+        });
     })
 };
 

@@ -2,66 +2,61 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <title>Document</title>
-    <script src="https://code.jquery.com/jquery-2.2.3.js" integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4=" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <!-- <link rel="stylesheet" href="jquery-ui.min.css">
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script src="https://code.jquery.com/jquery-2.2.3.js" integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4=" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <!-- <link rel="stylesheet" href="jquery-ui.min.css">
     <script src="external/jquery/jquery.js"></script>
     <script src="jquery-ui.min.js"></script>
  -->
-     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-     <script type="text/javascript" src="moment.min.js"></script>
-     <script src="https://code.highcharts.com/highcharts.js"></script>
-     <script src="https://code.highcharts.com/modules/exporting.js"></script>
-     <script type="text/javascript" src="solaredge.js"></script>
-    <script
-  src="http://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
-  integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
-  crossorigin="anonymous"></script>
-    <!--high charts examples -->
-
-    
-    <script>
-    $(document).ready(function() {
+  <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script type="text/javascript" src="js/moment.min.js"></script>
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+  <script src="https://code.highcharts.com/modules/exporting.js"></script>
+  <script type="text/javascript" src="js/solaredge.js"></script>
+  <script src="http://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
+  <!--high charts examples -->
+  <script>
+  $(document).ready(function() {
 
 
     //Side Bar activation
-        $("#removesidebar").click(function(){
-            // $("#sideBars").slideToggle("slow",function(){ 
-            $("#sideBars").toggle("fast", "linear");
-            $("#sideBars1").toggle("fast", "linear");
-            $("#col8thing").toggleClass("col s12");
-            $(".allpannel").switchClass("graphEnlarge")
-            $(".allpannel").toggleClass("hide");
-            $("#one").toggleClass("charter col s12");
-            
-            })
-        // })
+    $("#removesidebar").click(function() {
+        // $("#sideBars").slideToggle("slow",function(){ 
+        $("#sideBars").toggle("fast", "linear");
+        $("#sideBars1").toggle("fast", "linear");
+        $("#col8thing").toggleClass("col s12");
+        $(".allpannel").switchClass("graphEnlarge")
+        $(".allpannel").toggleClass("hide");
+        $("#one").toggleClass("charter col s12");
 
-        //     $(".charter").animate({
-        //         opacity: 0.25,
-        //     }, 500, function(){
-        //         });
+      })
+      // })
 
-            
-        //        $(".charter").toggleClass("hide");
-        //        $("#one").animate({
-        //         opacity: 1
+    //     $(".charter").animate({
+    //         opacity: 0.25,
+    //     }, 500, function(){
+    //         });
 
-        //     }, 500, function(){
-        //     });
 
-        //        $("#two").toggleClass("charter col s12");
-        //        $(".charter").toggleClass("hide");
-        //        $("two").toggleClass("col s10 expand charter")
-        //         $("#two").animate({
-        //         opacity: 1,
+    //        $(".charter").toggleClass("hide");
+    //        $("#one").animate({
+    //         opacity: 1
 
-        //     }, 500, function(){
-        //     });
-        // });
+    //     }, 500, function(){
+    //     });
+
+    //        $("#two").toggleClass("charter col s12");
+    //        $(".charter").toggleClass("hide");
+    //        $("two").toggleClass("col s10 expand charter")
+    //         $("#two").animate({
+    //         opacity: 1,
+
+    //     }, 500, function(){
+    //     });
+    // });
 
     //alternative activation (doesn't work yet)
 
@@ -71,13 +66,13 @@
     //         $("#col8thing").toggleClass("col s12");
     //         $(".allpannel").toggleClass("graphEnlarge")
     //         $(".charter").toggleClass("hide");
-             
+
     //         $(".graphEnlarge").animate({
     //             opacity: 1
     //         }, 500, function(){
     //             });
 
-            
+
     //            $(".charter").toggleClass("hide");
     //            $("#one").animate({
     //             opacity: 1
@@ -96,89 +91,92 @@
     //     });
 
 
-  
-    
-
-//automations made to charts when clicked
-    		$("#col8thing").delegate(".charter","click", function(){
-               $(this).toggleClass("charter s12");
-               $(".allpannel").toggleClass("graphEnlarge");
-               $(".charter").toggleClass("hide");
-               $(this).toggleClass("col expand charter");
-
-    		})
-    	})
-
-  
 
 
 
-// put listener on col8thing and delete whenever col6 is clicked
-//            go through and make all col6 except one clicked to display:none
-//            and change class of clicked col to cols12 so that it expands the whole thing 
+    //automations made to charts when clicked
+    $("#col8thing").delegate(".charter", "click", function() {
+      $(this).toggleClass("charter s12");
+      $(".allpannel").toggleClass("graphEnlarge");
+      $(".charter").toggleClass("hide");
+      $(this).toggleClass("col expand charter");
 
-    
-    
-    <!--location widget stufff -->
-   
-    </script>
+    })
+  })
 
-      <!-- Retrieved Data will be dumped here -->
- 
 
+
+
+
+  // put listener on col8thing and delete whenever col6 is clicked
+  //            go through and make all col6 except one clicked to display:none
+  //            and change class of clicked col to cols12 so that it expands the whole thing 
+
+
+
+  <!--location widget stufff -->
+  </script>
+  <!-- Retrieved Data will be dumped here -->
   <script src='https://code.jquery.com/jquery-3.1.1.min.js'></script>
-
   <!-- LINK TO FIREBASE -->
   <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
-
   <script type="text/javascript">
   (function() {
     // This is our API Key
-    var  APIKey = "08f926d9d006e2fa168e83287a7a5c95",
-       crossOrg = "https://crossorigin.me/",
-       inputTime = 'Nov. 27, 2016';
+    var APIKey = "08f926d9d006e2fa168e83287a7a5c95",
+      crossOrg = "https://crossorigin.me/",
+      inputTime = 'Nov. 27, 2016';
     var startTime, endTime, unixTime;
     // Time conversions for APIS
-      startTime = parseInt((formatDate(inputTime) + '0000'));
-        endTime = parseInt((formatDate(inputTime) + '2300'));
-       unixTime = Date.parse(inputTime)/1000;
-      console.log(startTime, endTime, unixTime);
+    startTime = parseInt((formatDate(inputTime) + '0000'));
+    endTime = parseInt((formatDate(inputTime) + '2300'));
+    unixTime = Date.parse(inputTime) / 1000;
+    console.log(startTime, endTime, unixTime);
     // Here we are building the URL we need to query the databases
-    var queryURL = crossOrg + "https://api.darksky.net/forecast/" + APIKey +"/41.9362832,-87.647056," + unixTime;
-    var queryURL2 = crossOrg + "https://hourlypricing.comed.com/api?type=5minutefeed&datestart="+startTime+"&dateend="+endTime;
-    var testCall = $.ajax({url: queryURL, method: 'GET', crossDomain: true});
-    var testCall2 = $.ajax({url: queryURL2, method: 'GET', crossDomain: true});
+    var queryURL = crossOrg + "https://api.darksky.net/forecast/" + APIKey + "/41.9362832,-87.647056," + unixTime;
+    var queryURL2 = crossOrg + "https://hourlypricing.comed.com/api?type=5minutefeed&datestart=" + startTime + "&dateend=" + endTime;
+    var testCall = $.ajax({
+      url: queryURL,
+      method: 'GET',
+      crossDomain: true
+    });
+    var testCall2 = $.ajax({
+      url: queryURL2,
+      method: 'GET',
+      crossDomain: true
+    });
     // Ajax calls
-    $.when( testCall, testCall2 )
-    // We store all of the retrieved data inside of an objects called "response" and "response2"
-    .done(function(response, response2) {
+    $.when(testCall, testCall2)
+      // We store all of the retrieved data inside of an objects called "response" and "response2"
+      .done(function(response, response2) {
         var weatherHours = response[0].hourly.data;
         var energyIntervals = JSON.parse(response2[0]);
         // create function that will take unix time and return energy price of that time
         var priceForTime = function(time) {
-            time = String(time); // time stored in energyInterval is a string type
-            // get the first energyInterval that has the time provided:
-            var interval = energyIntervals.filter(function(energyInterval) {
-                return energyInterval.millisUTC === time;
-            })[0];
-            // interval's price to a Number, not as string
-            // ternary expression
-            if (interval) {
-              return Number(interval.price);
-            }
+          time = String(time); // time stored in energyInterval is a string type
+          // get the first energyInterval that has the time provided:
+          var interval = energyIntervals.filter(function(energyInterval) {
+            return energyInterval.millisUTC === time;
+          })[0];
+          // interval's price to a Number, not as string
+          // ternary expression
+          if (interval) {
+            return Number(interval.price);
+          }
         };
         // create new data array with hour, weather, temperature, and price
         var data = weatherHours.map(function(weatherHour) {
-            return {
-                hour: new Date(weatherHour.time * 1000).getHours(),
-                weather: weatherHour.summary,
-                temperature: weatherHour.temperature,
-                price: priceForTime(weatherHour.time * 1000),
-            };
+          return {
+            hour: new Date(weatherHour.time * 1000).getHours(),
+            weather: weatherHour.summary,
+            temperature: weatherHour.temperature,
+            price: priceForTime(weatherHour.time * 1000),
+          };
         });
         console.table(data);
-    });
+      });
   })();
+
   function formatDate(date) {
     var d = new Date(date),
       month = '' + (d.getMonth() + 1),
@@ -189,207 +187,197 @@
     return [year, month, day].join('');
   }
   </script>
-    <style>
+  <style>
     body {
-        /*background: #363636;*/
-        background-image: url("images/background.jpg");
-        color: #00897b;
-    }
-    
-    .container {
-        width: auto;
-        padding: 3px;
-        margin-bottom: 2px;
-
-    }
-    
-    .allpannel {
-        border-width: 4px;
-        border-style: solid;
-        border-color: #00897b;
-        height: 260px;
-    }
-
-    .allpannel:hover{
-    	border-width: 4px;
-        border-color: #15c5b2;
-
-    }
-
-    .allpannel2 {
-        border-width: 4px;
-        border-style: solid;
-        border-color: #00897b;
-         }
-    
-    .allpannel2:hover{
-        border-width: 4px;
-        border-color: #15c5b2;
-
-    }
-    #pannel-okay {
-        text-align: center;
-        background: #969696;
-        padding: 8px;
-        width: 100%;
-    }
-    
-    #graph {
-        text-align: center;
-        background: #969696;
-        padding: 8px;
-        width: 100%;
-        margin: 5px 5px 5px 5px;
-        
-    }
-
-    .graphEnlarge{
-        text-align: center;
-        background: #969696;
-        padding: 8px;
-        width: 100%;
-        margin: 5px 5px 5px 5px;
-        height: 520px;
-    }
+    /*background: #363636;*/
+    background-image: url("images/background.jpg");
+    color: #00897b;
+  }
   
-    
-    #pannel-3 {
-        text-align: center;
-        background: #969696;
-        padding: 8px;
-        width: 100%;
-        height: 380px;
-        margin-top: 5px;
-    }
-    
-    #pannel-4 {
-        margin-top: 20px;
-        text-align: center;
-        background: #969696;
-        padding: 8px;
-        width: 100%;
-        height: 200px;
-        border-style: groove;
-    }
-    
-    #poweredby {
-        background-color: #969696;
-        text-align: left;
-        padding: 8px;
-        margin-top: 15px;
-        font-weight: bold;
-
-    }
-    .heading {  
-        background-color: #969696;
-        text-align: left;
-        padding: 8px;
-        margin-top: 15px;
-        font-weight: bold;
-    }
-    
-    #darksky {
-        width: 50px;
-    }
-    
-    #solaredge {
-        width: 50px;
-        height: 50px;
-    }
-
-    .charter{
-        position: relative;
-    }
-    
-    .hide {
-        display:none;
-       
-
-    }
-
-    .expand{
-        position: inline-box;
-        height: 400px;
-    }
-
-    #removesidebar{
-        float: right;
-        background-color: #00897b;
-    }
-
-    #alternate{
-        float: left;
-        background-color: #00897b;
-
-
-    </style>
-    
+  .container {
+    width: auto;
+    padding: 3px;
+    margin-bottom: 2px;
+  }
+  
+  .allpannel {
+    border-width: 4px;
+    border-style: solid;
+    border-color: #00897b;
+    height: 260px;
+  }
+  
+  .allpannel:hover {
+    border-width: 4px;
+    border-color: #15c5b2;
+  }
+  
+  .allpannel2 {
+    border-width: 4px;
+    border-style: solid;
+    border-color: #00897b;
+  }
+  
+  .allpannel2:hover {
+    border-width: 4px;
+    border-color: #15c5b2;
+  }
+  
+  #pannel-okay {
+    text-align: center;
+    background: #969696;
+    padding: 8px;
+    width: 100%;
+  }
+  
+  #graph {
+    text-align: center;
+    background: #969696;
+    padding: 8px;
+    width: 100%;
+    margin: 5px 5px 5px 5px;
+  }
+  
+  .graphEnlarge {
+    text-align: center;
+    background: #969696;
+    padding: 8px;
+    width: 100%;
+    margin: 5px 5px 5px 5px;
+    height: 520px;
+  }
+  
+  #pannel-3 {
+    text-align: center;
+    background: #969696;
+    padding: 8px;
+    width: 100%;
+    height: 380px;
+    margin-top: 5px;
+  }
+  
+  #pannel-4 {
+    margin-top: 20px;
+    text-align: center;
+    background: #969696;
+    padding: 8px;
+    width: 100%;
+    height: 200px;
+    border-style: groove;
+  }
+  
+  #poweredby {
+    background-color: #969696;
+    text-align: left;
+    padding: 8px;
+    margin-top: 15px;
+    font-weight: bold;
+  }
+  
+  .heading {
+    background-color: #969696;
+    text-align: left;
+    padding: 8px;
+    margin-top: 15px;
+    font-weight: bold;
+  }
+  
+  #darksky {
+    width: 50px;
+  }
+  
+  #solaredge {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .charter {
+    position: relative;
+  }
+  
+  .hide {
+    display: none;
+  }
+  
+  .expand {
+    position: inline-box;
+    height: 400px;
+  }
+  
+  #removesidebar {
+    float: right;
+    background-color: #00897b;
+  }
+  
+  #alternate {
+    float: left;
+    background-color: #00897b;
+  </style>
 </head>
 
 <body>
-<div class="container">
-   <div class="row">
-        <div class="col s12">
-            <div id="poweredby" class="allpannel2">
-            SOLAR DISPLAY 
-            </div>
+  <div class="container">
+    <div class="row">
+      <div class="col s12">
+        <div id="poweredby" class="allpannel2">
+          SOLAR DISPLAY
         </div>
+      </div>
     </div>
-
-    <div class="row">     	
-            <div id="col8thing" class="col s10">
-                <div class="row">
-                    <div class="col s12 m6 charter" id="one">
-                        <div id="graph" , class="allpannel">
-                          <h1>  <table id="weather"></table> </h1>
-                        </div>
-                    </div>
-                    <div class="col s12 m6 charter" id="two">
-                        <div id="graph" , class="allpannel">
-                            <h1><div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></h1>
-                        </div>
-                    </div>
-                   <div class="col s12 m6 charter" id="three">
-                        <div id="graph" , class="allpannel">
-                            <h1>GRAPH 3</h1>
-                        </div>
-                    </div>
-                   <div class="col s12 m6 charter" id="four">
-                        <div id="graph" , class="allpannel">
-                            <h1>GRAPH 4</h1>
-                        </div>
-                    </div>
-                </div>
+    <div class="row">
+      <div id="col8thing" class="col s10">
+        <div class="row">
+          <div class="col s12 m6 charter" id="one">
+            <div id="graph" , class="allpannel">
+              <h1>  <table id="weather"></table> </h1>
             </div>
-            <div class="col s2" id="sideBars">
-                <div id="pannel-3" , class="allpannel2">
-                    <h3> Current Location: 
-				<span id="currentLocation">  </span>
-				</h3>
-                    <span> <iframe id="forecast_embed" type="text/html" frameborder="0" height="245" width="100%" src="http://forecast.io/embed/#lat=42.3583&lon=-71.0603&name="> </iframe>
-				</span>
-                </div>
+          </div>
+          <div class="col s12 m6 charter" id="two">
+            <div id="graph" , class="allpannel">
+              <h1><div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></h1>
             </div>
-            <div class="col s2" id="sideBars1">
-                <div id="poweredby" , class="allpannel2">
-                    <span class="card-title">Powered By: </span>
-                    <hr>
-                    <a href="http://www.solaredge.com/us">
-                        <img src="images/solaredge.png" ; id="solaredge" ; class="circle responsive-img">
-                    </a>
-                    <a href="https://darksky.net/forecast/41.9288,-87.6315/us12/en">
-                        <img src="images/darksky.png" ; id="darksky" ; class=" circle responsive-img">
-                    </a>
-                    <a href="http://www.highcharts.com/">
-                        <img src="images/highcharts.png"; id="darksky"; class="circle repsonive-img">
-                    </a>
-                </div>
+          </div>
+          <div class="col s12 m6 charter" id="three">
+            <div id="graph" , class="allpannel">
+              <h1>GRAPH 3</h1>
             </div>
+          </div>
+          <div class="col s12 m6 charter" id="four">
+            <div id="graph" , class="allpannel">
+              <h1>GRAPH 4</h1>
+            </div>
+          </div>
         </div>
-           <button  class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off" id="removesidebar">Side Bar</button>
-           <button class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off" id="alternate">Alternate</button>
+      </div>
+      <div class="col s2" id="sideBars">
+        <div id="pannel-3" , class="allpannel2">
+          <h3> Current Location: 
+                <span id="currentLocation">  </span>
+                </h3>
+          <span> <iframe id="forecast_embed" type="text/html" frameborder="0" height="245" width="100%" src="http://forecast.io/embed/#lat=42.3583&lon=-71.0603&name="> </iframe>
+                </span>
+        </div>
+      </div>
+      <div class="col s2" id="sideBars1">
+        <div id="poweredby" , class="allpannel2">
+          <span class="card-title">Powered By: </span>
+          <hr>
+          <a href="http://www.solaredge.com/us">
+            <img src="images/solaredge.png" ; id="solaredge" ; class="circle responsive-img">
+          </a>
+          <a href="https://darksky.net/forecast/41.9288,-87.6315/us12/en">
+            <img src="images/darksky.png" ; id="darksky" ; class=" circle responsive-img">
+          </a>
+          <a href="http://www.highcharts.com/">
+            <img src="images/highcharts.png" ; id="darksky" ; class="circle repsonive-img">
+          </a>
+        </div>
+      </div>
     </div>
-    <!--End of container -->
+    <button class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off" id="removesidebar">Side Bar</button>
+    <button class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off" id="alternate">Alternate</button>
+  </div>
+  <!--End of container -->
 </body>
 
 </html>

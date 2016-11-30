@@ -11,6 +11,7 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
   <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+   <script src='https://code.jquery.com/jquery-3.1.1.min.js'></script>
 
 <script src="https://www.gstatic.com/firebasejs/3.6.1/firebase.js"></script>
 <script>
@@ -22,31 +23,36 @@
     storageBucket: "solardisplay-1479576622418.appspot.com",
     messagingSenderId: "479231386655"
   };
+  
   firebase.initializeApp(config);
 
   var database = firebase.database();
 
   //Values: 
-  var name="";
-  var siteId="";
-  var apiKey="";
+  var name= " ";
+  var siteId= " ";
+  var apiKey= " ";
 
-  //Capture Button Click 
+  //Capture Button Click    
  $("#logIn").on("click", function() {
 
 
     name= $('#name').val().trim();
     siteId= $('#siteId').val().trim();
     apiKey= $('#apiKey').val().trim();
+
+    console.log(name);
+    console.log(siteId);
   
-  database.ref().set({
+  database.ref().push({
       name: name,
       siteId: siteId,
       apiKey: apiKey,
   })
 
   return false;
-});
+
+})
 
 </script>
 

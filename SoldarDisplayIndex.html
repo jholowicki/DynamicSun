@@ -8,185 +8,8 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   <!-- <link rel="stylesheet" href="jquery-ui.min.css">
-    <script src="external/jquery/jquery.js"></script>
-    <script src="jquery-ui.min.js"></script>
- -->
-  <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-  <script type="text/javascript" src="js/moment.min.js"></script>
-  <script src="https://code.highcharts.com/highcharts.js"></script>
-  <script src="https://code.highcharts.com/modules/exporting.js"></script>
-  <script type="text/javascript" src="js/solaredge.js"></script>
-  <script src="http://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
-  <!--high charts examples -->
-  <script>
-  $(document).ready(function() {
-
-
-    //Side Bar activation
-    $("#removesidebar").click(function() {
-        // $("#sideBars").slideToggle("slow",function(){ 
-        $("#sideBars").toggle("fast", "linear");
-        $("#sideBars1").toggle("fast", "linear");
-        $("#col8thing").toggleClass("col s12");
-        $(".allpannel").switchClass("graphEnlarge")
-        $(".allpannel").toggleClass("hide");
-        $("#one").toggleClass("charter col s12");
-
-      })
-      // })
-
-    //     $(".charter").animate({
-    //         opacity: 0.25,
-    //     }, 500, function(){
-    //         });
-
-
-    //        $(".charter").toggleClass("hide");
-    //        $("#one").animate({
-    //         opacity: 1
-
-    //     }, 500, function(){
-    //     });
-
-    //        $("#two").toggleClass("charter col s12");
-    //        $(".charter").toggleClass("hide");
-    //        $("two").toggleClass("col s10 expand charter")
-    //         $("#two").animate({
-    //         opacity: 1,
-
-    //     }, 500, function(){
-    //     });
-    // });
-
-    //alternative activation (doesn't work yet)
-
-    // $("#alternate").click(function(){
-    //         $("#sideBars").toggleClass("hide");
-    //         $("#sideBars1").toggleClass("hide");
-    //         $("#col8thing").toggleClass("col s12");
-    //         $(".allpannel").toggleClass("graphEnlarge")
-    //         $(".charter").toggleClass("hide");
-
-    //         $(".graphEnlarge").animate({
-    //             opacity: 1
-    //         }, 500, function(){
-    //             });
-
-
-    //            $(".charter").toggleClass("hide");
-    //            $("#one").animate({
-    //             opacity: 1
-
-    //         }, 500, function(){
-    //         });
-
-    //            $("#two").toggleClass("charter col s12");
-    //            $(".charter").toggleClass("hide");
-    //            $("two").toggleClass("col s10 expand charter")
-    //             $("#two").animate({
-    //             opacity: 1,
-
-    //         }, 500, function(){
-    //         });  
-    //     });
-
-
-
-
-
-    //automations made to charts when clicked
-    $("#col8thing").delegate(".charter", "click", function() {
-      $(this).toggleClass("charter s12");
-      $(".allpannel").toggleClass("graphEnlarge");
-      $(".charter").toggleClass("hide");
-      $(this).toggleClass("col expand charter");
-
-    })
-  })
-
-
-
-
-
-  // put listener on col8thing and delete whenever col6 is clicked
-  //            go through and make all col6 except one clicked to display:none
-  //            and change class of clicked col to cols12 so that it expands the whole thing 
-
-
-
-  <!--location widget stufff -->
-  </script>
-  <!-- Retrieved Data will be dumped here -->
-  <script src='https://code.jquery.com/jquery-3.1.1.min.js'></script>
-  <!-- LINK TO FIREBASE -->
-  <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
-  <script type="text/javascript">
-  (function() {
-    // This is our API Key
-    var APIKey = "08f926d9d006e2fa168e83287a7a5c95",
-      crossOrg = "https://crossorigin.me/",
-      inputTime = 'Nov. 27, 2016';
-    var startTime, endTime, unixTime;
-    // Time conversions for APIS
-    startTime = parseInt((formatDate(inputTime) + '0000'));
-    endTime = parseInt((formatDate(inputTime) + '2300'));
-    unixTime = Date.parse(inputTime) / 1000;
-    console.log(startTime, endTime, unixTime);
-    // Here we are building the URL we need to query the databases
-    var queryURL = crossOrg + "https://api.darksky.net/forecast/" + APIKey + "/41.9362832,-87.647056," + unixTime;
-    var queryURL2 = crossOrg + "https://hourlypricing.comed.com/api?type=5minutefeed&datestart=" + startTime + "&dateend=" + endTime;
-    var testCall = $.ajax({
-      url: queryURL,
-      method: 'GET',
-      crossDomain: true
-    });
-    var testCall2 = $.ajax({
-      url: queryURL2,
-      method: 'GET',
-      crossDomain: true
-    });
-    // Ajax calls
-    $.when(testCall, testCall2)
-      // We store all of the retrieved data inside of an objects called "response" and "response2"
-      .done(function(response, response2) {
-        var weatherHours = response[0].hourly.data;
-        var energyIntervals = JSON.parse(response2[0]);
-        // create function that will take unix time and return energy price of that time
-        var priceForTime = function(time) {
-          time = String(time); // time stored in energyInterval is a string type
-          // get the first energyInterval that has the time provided:
-          var interval = energyIntervals.filter(function(energyInterval) {
-            return energyInterval.millisUTC === time;
-          })[0];
-          // interval's price to a Number, not as string
-          // ternary expression
-          if (interval) {
-            return Number(interval.price);
-          }
-        };
-        // create new data array with hour, weather, temperature, and price
-        var data = weatherHours.map(function(weatherHour) {
-          return {
-            hour: new Date(weatherHour.time * 1000).getHours(),
-            weather: weatherHour.summary,
-            temperature: weatherHour.temperature,
-            price: priceForTime(weatherHour.time * 1000),
-          };
-        });
-        console.table(data);
-      });
-  })();
-
-  function formatDate(date) {
-    var d = new Date(date),
-      month = '' + (d.getMonth() + 1),
-      day = '' + d.getDate(),
-      year = d.getFullYear();
-    if (month.length < 2) month = '0' + month;
-    if (day.length < 2) day = '0' + day;
-    return [year, month, day].join('');
-  }
-  </script>
+  -->
+  
   <style>
     body {
     /*background: #363636;*/
@@ -329,7 +152,7 @@
         <div class="row">
           <div class="col s12 m6 charter" id="one">
             <div id="graph" , class="allpannel">
-              <h1>  <table id="weather"></table> </h1>
+              <table id="weather"></table>
             </div>
           </div>
           <div class="col s12 m6 charter" id="two">
@@ -378,6 +201,118 @@
     <button class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off" id="alternate">Alternate</button>
   </div>
   <!--End of container -->
+
+  <script src='https://code.jquery.com/jquery-3.1.1.min.js'></script>
+  <script type="text/javascript" src="js/moment.min.js"></script>
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+  <script src="https://code.highcharts.com/modules/exporting.js"></script>
+  <script type="text/javascript" src="js/solaredge.js"></script>
+  <script src="http://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
+   <!-- Retrieved Data will be dumped here -->
+  
+  <!-- LINK TO FIREBASE -->
+  <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
+  <!--high charts examples -->
+  <script>
+  $(document).ready(function() {
+
+
+    //Side Bar activation
+    $("#removesidebar").click(function() {
+        // $("#sideBars").slideToggle("slow",function(){ 
+        $("#sideBars").toggle("fast", "linear");
+        $("#sideBars1").toggle("fast", "linear");
+        $("#col8thing").toggleClass("col s12");
+        $(".allpannel").switchClass("graphEnlarge")
+        $(".allpannel").toggleClass("hide");
+        $("#one").toggleClass("charter col s12");
+
+      })
+      // })
+
+    //     $(".charter").animate({
+    //         opacity: 0.25,
+    //     }, 500, function(){
+    //         });
+
+
+    //        $(".charter").toggleClass("hide");
+    //        $("#one").animate({
+    //         opacity: 1
+
+    //     }, 500, function(){
+    //     });
+
+    //        $("#two").toggleClass("charter col s12");
+    //        $(".charter").toggleClass("hide");
+    //        $("two").toggleClass("col s10 expand charter")
+    //         $("#two").animate({
+    //         opacity: 1,
+
+    //     }, 500, function(){
+    //     });
+    // });
+
+    //alternative activation (doesn't work yet)
+
+    // $("#alternate").click(function(){
+    //         $("#sideBars").toggleClass("hide");
+    //         $("#sideBars1").toggleClass("hide");
+    //         $("#col8thing").toggleClass("col s12");
+    //         $(".allpannel").toggleClass("graphEnlarge")
+    //         $(".charter").toggleClass("hide");
+
+    //         $(".graphEnlarge").animate({
+    //             opacity: 1
+    //         }, 500, function(){
+    //             });
+
+
+    //            $(".charter").toggleClass("hide");
+    //            $("#one").animate({
+    //             opacity: 1
+
+    //         }, 500, function(){
+    //         });
+
+    //            $("#two").toggleClass("charter col s12");
+    //            $(".charter").toggleClass("hide");
+    //            $("two").toggleClass("col s10 expand charter")
+    //             $("#two").animate({
+    //             opacity: 1,
+
+    //         }, 500, function(){
+    //         });  
+    //     });
+
+
+
+
+
+    //automations made to charts when clicked
+    $("#col8thing").delegate(".charter", "click", function() {
+      $(this).toggleClass("charter s12");
+      $(".allpannel").toggleClass("graphEnlarge");
+      $(".charter").toggleClass("hide");
+      $(this).toggleClass("col expand charter");
+
+    })
+  })
+
+
+
+
+
+  // put listener on col8thing and delete whenever col6 is clicked
+  //            go through and make all col6 except one clicked to display:none
+  //            and change class of clicked col to cols12 so that it expands the whole thing 
+
+
+
+  <!--location widget stufff -->
+  </script>
+ 
+  <script type='text/javascript' src='js/combined-apis.js'></script>
 </body>
 
 </html>

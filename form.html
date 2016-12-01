@@ -40,16 +40,34 @@
     apiKey  = $('#apiKey').val().trim();
     apidate = $('#apidate').val().trim();
   
-  database.ref().push({
+  database.ref().set({
       name: name,
       siteId: siteId,
       apiKey: apiKey,
       apidate: apidate
   })
 
-  return false;
+});
 
-})
+ // change in value
+  database.ref().on("value", function(snapshot) {
+
+    // value of whole db
+    console.log(snapshot.val().apidate);
+
+    // grab value from the db and put it into html
+   // $("#clickValue").html(snapshot.val().clickCount);
+
+    //  Intial load of the page set clickCounter value
+   // clickCounter = snapshot.val().clickCount;
+
+  // 
+  }, function (errorObject) {
+
+    // 
+      console.log("The read failed: " + errorObject.code);
+  
+  });
 
 </script>
 

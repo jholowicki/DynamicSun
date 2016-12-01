@@ -15,13 +15,11 @@ var solaredgeCallOne = function() {
         crossDomain: true,
         dataType: 'json'
     }).done(function(response) {
-        console.log("hello", response);
         var id = response.details.id
-        console.log("hello", id);
         address = response.details.location.address + ", " + response.details.location.city + ", " + response.details.location.state
-        console.log("hello", address);
+        // $("#address-display").append("<p>SOLAR DISPLAY" + address + "</p>");
+
         var siteImage = "https://monitoringapi.solaredge.com/" + response.details.uris.SITE_IMAGE
-        console.log("hello", siteImage);
 
     })
 };

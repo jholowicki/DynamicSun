@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Document</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
   <title>ProjectOne</title>
 
@@ -11,65 +9,6 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
   <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-   <script src='https://code.jquery.com/jquery-3.1.1.min.js'></script>
-
-<script src="https://www.gstatic.com/firebasejs/3.6.1/firebase.js"></script>
-<script>
-  // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyDQvZNPfQhdI-tbWGtM2ZJVf--LsyGiwWs",
-    authDomain: "solardisplay-1479576622418.firebaseapp.com",
-    databaseURL: "https://solardisplay-1479576622418.firebaseio.com",
-    storageBucket: "solardisplay-1479576622418.appspot.com",
-    messagingSenderId: "479231386655"
-  };
-  
-  firebase.initializeApp(config);
-
-  var database = firebase.database();
-
-  //Values: 
-  var name, siteId, apiKey, apidate;
-
-  //Capture Button Click    
- $(document).on("click", "#logIn", function() {
-
-
-    name = $('#name').val().trim();
-    siteId = $('#siteId').val().trim();
-    apiKey  = $('#apiKey').val().trim();
-    apidate = $('#apidate').val().trim();
-  
-  database.ref().set({
-      name: name,
-      siteId: siteId,
-      apiKey: apiKey,
-      apidate: apidate
-  })
-
-});
-
- // change in value
-  database.ref().on("value", function(snapshot) {
-
-    // value of whole db
-    console.log(snapshot.val().apidate);
-
-    // grab value from the db and put it into html
-   // $("#clickValue").html(snapshot.val().clickCount);
-
-    //  Intial load of the page set clickCounter value
-   // clickCounter = snapshot.val().clickCount;
-
-  // 
-  }, function (errorObject) {
-
-    // 
-      console.log("The read failed: " + errorObject.code);
-  
-  });
-
-</script>
 
 </head>
 <body>
@@ -90,11 +29,14 @@
       </div>
       <div class="row">
         <div class="input-field col s12">
-          <input placeholder="Date to view: MM DD YYYY" name="apidate" id="apidate" type="text" class="validate">       
+          <input placeholder="Date to view: Mon DD YYYY" name="apidate" id="apidate" type="text" class="validate">       
         </div>
       </div>
      <button class="btn btn-default" id="logIn">Submit</button>
       </div>
   </div>
-  </body>
+  <script src='https://code.jquery.com/jquery-3.1.1.min.js'></script>
+  <script src="https://www.gstatic.com/firebasejs/3.6.1/firebase.js"></script>
+  <script type='text/javascript' src='js/login.js'></script>
+</body>
 </html>

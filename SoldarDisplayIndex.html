@@ -135,6 +135,15 @@
   #alternate {
     float: left;
     background-color: #00897b;
+  }
+  .weather-mod {
+    height: auto;
+  }
+  #weather, #weather caption {
+    background: #FFD;
+  }
+  #weather td, #weather th, #weather caption { padding: 0.5em 1em; }
+  #weather caption { text-align: center; font-weight: bold; font-size: 1.2em; }
   </style>
 </head>
 
@@ -150,9 +159,13 @@
     <div class="row">
       <div id="col8thing" class="col s10">
         <div class="row">
+        <div class="col s12 charter">
+            <div id="graph" , class="allpannel weather-mod">
+              <table id="weather"></table>
+            </div>
+          </div>
           <div class="col s12 m6 charter" id="one">
             <div id="graph" , class="allpannel">
-              <table id="weather"></table>
             </div>
           </div>
           <div class="col s12 m6 charter" id="two">

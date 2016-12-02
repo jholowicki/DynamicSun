@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0" />
+  <title>ProjectOne</title>
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
+  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
+</head>
+
+<body>
+  <div class="row">
+    <div class="row">
+      <div class="input-field col s6">
+        <input placeholder="Name" id="name" type="text" class="validate">
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input placeholder="Site ID" id="siteId" type="text" class="validate">
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input placeholder="API Key" id="apiKey" type="password" class="validate">
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input placeholder="Date to view: Mon DD YYYY" name="apidate" id="apidate" type="text" class="validate">
+        </div>
+      </div>
+      <button class="btn btn-default" id="logIn"><a href="SolarDisplayIndex.html">Submit</button>
+      </div>
+  </div>
+  <script src='https://code.jquery.com/jquery-3.1.1.min.js'></script>
+  <script src="https://www.gstatic.com/firebasejs/3.6.1/firebase.js"></script>
+  <script type='text/javascript' src='js/login.js'></script>
+</body>
+</html>

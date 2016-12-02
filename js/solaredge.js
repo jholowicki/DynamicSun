@@ -58,7 +58,7 @@ var solaredgeCallTwo = function() {
         //output is response.energy.values: Array of 24 objects
         //in values array each object has date & value keys. "2016-11-24 00:00:00" & null or 13.221094 output
         $(function() {
-            Highcharts.chart('container', {
+            Highcharts.chart('solarEdgeGraph', {
                 chart: {
                     type: 'column'
                 },

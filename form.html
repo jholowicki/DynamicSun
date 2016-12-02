@@ -31,9 +31,16 @@
   //Values: 
   var name, siteId, apiKey, apidate;
 
+
+
+      function open_win() {
+           window.open("file:///C:/Users/tgmil/Documents/DynamicSun/SoldarDisplayIndex.html")
+      }
+
+
   //Capture Button Click    
  $(document).on("click", "#logIn", function() {
-
+    open_win();
 
     name = $('#name').val().trim();
     siteId = $('#siteId').val().trim();
@@ -75,7 +82,7 @@
           <input placeholder="Date to view: MM DD YYYY" name="apidate" id="apidate" type="text" class="validate">       
         </div>
       </div>
-     <button class="btn btn-default" id="logIn">Submit</button>
+     <button  class="btn btn-default" id="logIn">Submit</button>
       </div>
   </div>
   </body>
